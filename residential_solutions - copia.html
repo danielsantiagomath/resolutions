@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duke Energy Product Script</title>
+
+<style>
+
+/* ===== PAGE BACKGROUND ===== */
+
+body{
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin:0;
+    min-height:100vh;
+    color:#333;
+    background:linear-gradient(135deg,#5b2be0,#7c3aed,#a78bfa);
+}
+
+/* ===== ICON PATTERN LAYER ===== */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+
+background-image:
+url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 24 24' fill='white'%3E%3Cpath opacity='0.08' d='M13 2L3 14h7v8l11-14h-7z'/%3E%3C/svg%3E"),
+url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 24 24' fill='white'%3E%3Cpath opacity='0.07' d='M9 21h6v-2H9v2zm3-20C8.69 1 6 3.69 6 7c0 2.38 1.19 4.47 3 5.74V15h6v-2.26C16.81 11.47 18 9.38 18 7c0-3.31-2.69-6-6-6z'/%3E%3C/svg%3E");
+
+background-size:180px 180px, 220px 220px;
+background-position:0 0, 110px 110px;
+background-repeat:repeat;
+z-index:0;
+}
+
+/* ===== HEADER ===== */
+
+header{
+background:rgba(40,10,90,0.9);
+color:white;
+padding:25px;
+text-align:center;
+box-shadow:0 4px 12px rgba(0,0,0,0.3);
+position:relative;
+z-index:1;
+}
+
+header h1{
+margin:0;
+font-size:28px;
+}
+
+/* ===== CONTENT ===== */
+
+section{
+background:white;
+margin:30px auto;
+padding:25px;
+max-width:900px;
+border-radius:10px;
+box-shadow:0 6px 20px rgba(0,0,0,0.15);
+transition:0.2s;
+position:relative;
+z-index:1;
+}
+
+section:hover{
+transform:translateY(-3px);
+}
+
+/* ===== TITLES ===== */
+
+h2{
+color:#6d28d9;
+}
+
+/* ===== NOTE BOX ===== */
+
+.note{
+background:#ede9fe;
+border-left:6px solid #7c3aed;
+padding:12px;
+margin-bottom:15px;
+border-radius:4px;
+}
+
+/* ===== HIGHLIGHT TEXT ===== */
+
+.highlight{
+font-weight:bold;
+color:#7c3aed;
+}
+
+/* ===== LISTS ===== */
+
+ul,ol{
+padding-left:20px;
+}
+
+/* ===== DIVIDER ===== */
+
+.divider{
+margin:30px 0;
+border-top:2px dashed #c4b5fd;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Duke Energy - Home Protection Plans</h1>
+<p>Let's get it! Let's do it! Crush it! Make it happen!</p>
+</header>
+
+<section>
+
+<div class="note">
+<strong>Note:</strong> Are you the owner of this property?.
+</div>
+
+<p>
+Ok, so <strong>Mr./Ms. Cx</strong>, I was checking your account and I'd like to provide you an important information on your account so you can have the updates from Duke Energy today. ¿Ok?
+</p>
+
+</section>
+
+<section>
+
+<h2>Surge Coverage & Grounding Enhanced Plan</h2>
+
+<p>
+Nowadays many customers are not aware that power surges create energy spikes that can damage appliances in the property. Right? To prevent this, you can get the <span class="highlight">Surge Coverage & Grounding Enhanced Plan</span>.
+</p>
+
+<p>This coverage protects devices and appliances such as:</p>
+
+<ul>
+<li>TVs</li>
+<li>Computers</li>
+<li>iPads</li>
+<li>Game consoles</li>
+<li>Air conditioning system</li>
+<li>And many others</li>
+</ul>
+
+<p>
+That includes <strong>$2,500 per incident</strong> and up to <strong>$5,000 per year</strong> for only 
+<strong>$7.99 per month</strong>.
+</p>
+
+<p>
+This coverage can be applied starting on your next bill due to the 30-day waiting period.
+</p>
+
+<p class="highlight">
+Would you like to protect your devices today?
+</p>
+
+
+</section>
+
+<section>
+
+<h2>Home Wire Premium Plan</h2>
+
+<p>Nowadays many of our customer are not aware that the energy spikes could damage the electrical system, so to prevent this from happening to you, today you can get the Home Wire Premium Plan, so you can protect your:</p>
+
+<ul>
+<li>Breakers</li>
+<li>Light switches</li>
+<li>Outles</li>
+<li>And many others</li>
+</ul>
+
+<p>
+Also, you can get a <strong>professional technicians</strong> when you need one with no service call fees and as many inspections as you need.
+</p>
+
+<p>This Coverage includes up to <strong>$3,000 per year</strong> for electrical repairs.</p>
+
+<div class="divider"></div>
+
+<strong>¿Do you have Water Heater at home?</strong>
+
+<h2>Water Heater Premium Plan</h2>
+
+<p>
+If you have any issue with your water heater, it doesn't matter if it's electric, with gas or thankless, you can get:
+</p>
+
+<ul>
+<li>$3,000 yearly coverage</li>
+<li>Unlimited service calls</li>
+<li>Free inspections</li>
+<li>Licensed technicians</li>
+</ul>
+
+<p>
+Home Wire Premium: <strong>$12.99/month</strong><br>
+Water Heater Premium: <strong>$14.99/month</strong>
+</p>
+
+<p>
+Remember that there's no upfront payment, no contracts, no cancellation fees for the protections that you can have as long as you want. Also, there is a 30 days waiting period for coverage to begin..
+</p>
+
+<p class="highlight">
+Would you like to protect your appliances today?
+</p>
+
+</section>
+
+<section>
+
+<h3>Customer refuses</h3>
+<p class="highlight">
+"No problem, our job is just to inform you about what could happen if you don't have a protection like this, but of course, at the end of the day that is totally up to you, so you have any question, there is anything else I can do your you today?"
+</p>
+
+</section>
+
+</body>
+</html>
