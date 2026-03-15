@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Indiana Home Protection Plans</title>
+
+<style>
+
+body{
+font-family:"Segoe UI",Arial;
+margin:0;
+background:linear-gradient(135deg,#5b2be0,#7c3aed,#a78bfa);
+color:#333;
+padding-top:120px;
+}
+
+/* BACKGROUND ICON */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+opacity:0.1;
+pointer-events:none;
+
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M13 2L3 14h7v8l11-14h-7z'/%3E%3C/svg%3E");
+
+background-size:250px;
+background-repeat:repeat;
+}
+
+/* HEADER */
+
+header{
+background:#2e1065;
+color:white;
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+box-shadow:0 4px 12px rgba(0,0,0,0.3);
+}
+
+.header-container{
+max-width:900px;
+margin:auto;
+padding:15px 20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.header-center{
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+margin:auto;
+}
+
+.header-top{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.header-top img{
+height:40px;
+}
+
+.header-text{
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+
+.header-title{
+font-size:22px;
+font-weight:bold;
+}
+
+.slogan{
+font-size:14px;
+font-style:italic;
+font-weight:normal;
+opacity:0.9;
+}
+
+/* LANGUAGE SWITCH */
+
+.lang-switch{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.lang-label{
+font-size:12px;
+font-weight:600;
+}
+
+.switch{
+position:relative;
+width:40px;
+height:20px;
+}
+
+.switch input{
+display:none;
+}
+
+.slider{
+position:absolute;
+background:#c4b5fd;
+border-radius:20px;
+width:100%;
+height:100%;
+}
+
+.slider:before{
+content:"";
+position:absolute;
+height:16px;
+width:16px;
+left:2px;
+top:2px;
+background:white;
+border-radius:50%;
+transition:0.3s;
+}
+
+input:checked + .slider:before{
+transform:translateX(20px);
+}
+
+/* CONTENT SECTIONS */
+
+section{
+background:white;
+margin:25px auto;
+padding:25px;
+max-width:900px;
+border-radius:10px;
+box-shadow:0 6px 20px rgba(0,0,0,0.2);
+}
+
+h2{
+color:#6d28d9;
+margin-top:0;
+}
+
+/* TEXT STYLES */
+
+.keyword{
+font-weight:bold;
+color:#6d28d9;
+}
+
+.price{
+background:#7c3aed;
+color:white;
+padding:1px 6px;
+border-radius:5px;
+font-weight:bold;
+}
+
+.highlight{
+font-weight:bold;
+font-size:18px;
+color:#7c3aed;
+}
+
+/* LANGUAGE */
+
+.es{
+display:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header-container">
+
+<div class="header-center">
+
+<div class="header-top">
+
+<img src="https://catawbalands.org/wp-content/uploads/2020/02/Duke-Energy-Logo-Wht_RGB.png">
+
+<div class="header-text">
+
+<div class="header-title">
+Indiana Home Protection Plans
+</div>
+
+<div class="slogan">
+Let's get it, let's do it, crush it, make it happen!
+</div>
+
+</div></div>
+
+</div>
+
+<div class="lang-switch">
+
+<span class="lang-label">EN</span>
+
+<label class="switch">
+<input type="checkbox" id="langSwitch" onchange="switchLanguage()">
+<span class="slider"></span>
+</label>
+
+<span class="lang-label">ES</span>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- INTRO -->
+
+<section>
+
+<div class="en">
+<p>
+<strong>
+Now, I would like to share an update on your Duke Energy account.
+</strong>
+</p>
+</div>
+
+<div class="es">
+<p>
+<strong>
+Ahora, quiero compartirle una actualización en su cuenta de Duke Energy.
+</strong>
+</p>
+</div>
+
+</section>
+
+<!-- RENTERS -->
+
+<section>
+
+<div class="en">
+
+<h2><span class="price">Renters plan</span></h2>
+
+<h2>⚡Surge coverage & grounding enhanced</h2>
+
+<p>
+You are eligible for <span class="keyword">Surge Coverage and Grounding Enhanced</span>.
+</p>
+
+<p class="highlight">
+<span class="keyword">Would you like to protect your appliances?</span>
+</p>
+
+
+</div>
+
+<div class="es">
+
+<h2><span class="price">Plan para arrendados</span></h2>
+
+<h2>Cobertura contra sobretensiones y conexiones a tierra</h2>
+
+<p>
+Usted es elegible para la <span class="keyword">Cobertura contra sobretensiones y conexiones a tierra</span>.
+</p>
+
+<p class="highlight">
+<span class="keyword">¿Le gustaría proteger sus electrodomésticos?</span>
+</p>
+
+</div>
+
+</section>
+
+<!-- PREMIUM -->
+
+<section>
+
+<div class="en">
+
+<h2><span class="price">Homeowners plans</span></h2>
+
+<h2>Home Wiring Repair Premium</h2>
+
+<p>
+You are eligible for the Home Wiring Repair Premium.
+</p>
+
+<p class="highlight">
+Do you have a water heater at home?
+</p>
+
+<h2>💧Water Heater Repair Premium</h2>
+
+<p>
+With the <span class="keyword">Water Heater Premium Plan</span> we cover the repair or replacement of your water heater.
+</p>
+
+<p class="highlight">
+Would you like to protect your appliances?
+</p>
+
+</div>
+
+<div class="es">
+
+<h2><span class="price">Planes para propietarios</span></h2>
+
+<h2>Reparación premium del cableado doméstico</h2>
+
+<p>
+Usted es elegible para el programa <span class="keyword">Premium de Reparación de Cableado Doméstico</span>.</p>
+
+<p class="highlight">
+¿Tiene calentador de agua en su hogar?
+</p>
+
+<h2>💧Plan premium del calentador de agua (dueños)</h2>
+
+<p>
+Con el <span class="keyword">Plan Premium para Calentadores de Agua</span>, cubrimos la reparación o el reemplazo de su calentador de agua.
+</p>
+
+<p class="highlight">
+¿Le gustaría proteger sus electrodomésticos?
+</p>
+
+</div>
+
+</section>
+
+<!-- ESSENTIAL -->
+
+<section>
+
+<div class="en">
+
+<h2><span class="price">Essentials plans (homeowners)</span></h2>
+
+<p>
+I see on your account that you currently have the basic version of our coverage.
+You can receive additional benefits by upgrading to the Premium version.
+</p>
+
+<h2>Home Wiring Repair Essential</h2>
+
+<p>
+(info about plan)
+</p>
+
+<h2>Water Heater Repair Essential</h2>
+
+<p>
+(info about plan)
+</p>
+
+<p class="highlight">
+Would you like to protect your appliances?
+</p>
+
+</div>
+
+<div class="es">
+
+<h2><span class="price">Planes básicos (propietarios)</span></h2>
+
+<p>
+Actualmente tiene la versión básica de cobertura.
+Puede obtener más beneficios actualizando a la versión Premium.
+</p>
+
+<h2>Reparación esencial del cableado eléctrico del hogar</h2>
+
+<p>
+(info. sobre la cobertura).
+</p>
+
+<h2>Reparación esencial de calentadores de agua</h2>
+
+<p>
+(info. sobre la cobertura)
+</p>
+
+<p class="highlight">
+¿Le gustaría proteger sus electrodomésticos?
+</p>
+
+</div>
+
+</section>
+
+<script>
+
+function switchLanguage(){
+
+const en=document.querySelectorAll(".en")
+const es=document.querySelectorAll(".es")
+const checked=document.getElementById("langSwitch").checked
+
+if(checked){
+en.forEach(el=>el.style.display="none")
+es.forEach(el=>el.style.display="block")
+}else{
+en.forEach(el=>el.style.display="block")
+es.forEach(el=>el.style.display="none")
+}
+
+}
+
+</script>
+
+</body>
+</html>
