@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midwest High Bill Helper</title>
+
+<style>
+body{
+font-family:'Segoe UI',sans-serif;
+margin:0;
+background:#f0f4f8;
+}
+
+/* HEADER */
+header{
+background:#0046ad;
+color:white;
+text-align:center;
+padding:20px;
+position:relative;
+}
+
+header img{height:50px;}
+
+.switch{
+position:absolute;
+top:20px;
+right:20px;
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.switch input{display:none;}
+
+.slider-switch{
+width:50px;height:24px;
+background:#ccc;border-radius:20px;
+position:relative;cursor:pointer;
+}
+
+.slider-switch::before{
+content:'';
+position:absolute;
+width:20px;height:20px;
+background:white;border-radius:50%;
+top:2px;left:2px;transition:.3s;
+}
+
+input:checked + .slider-switch{background:#ffcd00;}
+input:checked + .slider-switch::before{transform:translateX(26px);}
+
+/* MAIN */
+main{
+max-width:800px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.section{
+background:white;
+border-radius:12px;
+padding:20px;
+margin-bottom:15px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* BUTTONS */
+button{
+border:none;border-radius:10px;
+cursor:pointer;font-weight:bold;
+}
+
+.jurisdiction-btns button{
+background:#e6f0ff;color:#0046ad;
+margin:10px;padding:15px 25px;
+}
+
+.jurisdiction-btns button.selected {
+  background: linear-gradient(145deg, #0046ad, #0060d0);
+  color: #ffffff !important; /* 👈 esto asegura que el texto sea blanco */
+}
+
+.selected{
+background:#0046ad!important;
+color:white;
+box-shadow:0 0 10px rgba(0,70,173,0.6);
+}
+
+.season-btns button{
+margin:5px;padding:10px 18px;
+border-radius:20px;color:white;
+}
+
+[data-season="winter"]{background:#0099ff;}
+[data-season="spring"]{background:#33cc33;}
+[data-season="summer"]{background:#ff9933;}
+[data-season="fall"]{background:#cc6600;}
+
+.season-btns .selected{
+transform:scale(1.05);
+box-shadow:0 0 10px rgba(0,0,0,0.3);
+}
+
+/* SLIDER */
+.slider-box{text-align:center;margin-bottom:15px;}
+.slider-value{font-size:24px;font-weight:bold;}
+
+.slider-wrap{
+display:flex;align-items:center;gap:10px;
+}
+
+.slider-wrap button{
+background:#0046ad;color:white;
+width:35px;height:35px;
+border-radius:50%;
+font-size:18px;
+}
+
+input[type=range]{
+flex:1;height:10px;border-radius:10px;
+appearance:none;background:blue;
+}
+
+/* BUTTON ANALYZE */
+.submitBtn{
+width:100%;
+padding:16px;
+font-size:18px;
+border-radius:10px;
+background:linear-gradient(145deg,#0046ad,#0060d0);
+color:white;
+font-weight:bold;
+letter-spacing:0.5px;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
+transition:all 0.25s ease;
+}
+
+.submitBtn:hover{
+background:linear-gradient(145deg,#003180,#0046ad);
+transform:translateY(-2px);
+box-shadow:0 6px 16px rgba(0,0,0,0.25);
+}
+
+.submitBtn:active{
+transform:scale(0.98);
+}
+
+/* RESULTS */
+.result-card{
+background:#fffbe6;
+border-left:6px solid #ffcd00;
+padding:20px;margin-top:15px;
+border-radius:12px;
+}
+
+/* FOOTER */
+footer{
+background:#eaeff3;
+padding:20px;
+margin-top:20px;
+border-top:2px solid #0046ad;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="https://catawbalands.org/wp-content/uploads/2020/02/Duke-Energy-Logo-Wht_RGB.png">
+<h1 id="title">Midwest High Bill Helper</h1>
+<p id="subtitle">Help us understand your energy usage so we can give personalized tips.</p>
+
+<div class="switch">
+<span>EN</span>
+<input type="checkbox" id="langSwitch">
+<label class="slider-switch" for="langSwitch"></label>
+<span>ES</span>
+</div>
+</header>
+
+<main>
+
+<section class="section">
+<h2 id="stateLabel">Select your State</h2>
+<div class="jurisdiction-btns">
+<button data-state="KY">Kentucky</button>
+<button data-state="IN">Indiana</button>
+<button data-state="OH">Ohio</button>
+</div>
+</section>
+
+<section class="section">
+<h2>Lifestyle</h2>
+<label><input type="checkbox" id="people"> <span class="t" data-en="More people at home?" data-es="¿Más personas en casa?"></span></label><br>
+<label><input type="checkbox" id="space"> <span class="t" data-en="Use space heaters?" data-es="¿Usa calentadores eléctricos?"></span></label><br>
+<label><input type="checkbox" id="laundry"> <span class="t" data-en="Use hot water for laundry?" data-es="¿Usa agua caliente para lavar ropa?"></span></label><br>
+<label><input type="checkbox" id="ev"> <span class="t" data-en="Electric vehicle charging?" data-es="¿Carga vehículo eléctrico?"></span></label>
+</section>
+
+<section class="section">
+<h2>Thermostat</h2>
+<div class="slider-box">
+<div class="slider-value" id="tVal">68°F</div>
+<div class="slider-wrap">
+<button onclick="adjust('thermostat',-1)">−</button>
+<input type="range" id="thermostat" min="60" max="80" value="68">
+<button onclick="adjust('thermostat',1)">+</button>
+</div>
+</div>
+<label><input type="checkbox" id="sameTemp"> <span class="t" data-en="Keep same temperature?" data-es="¿Mantiene la misma temperatura?"></span></label>
+</section>
+
+<section class="section">
+<h2>Water Heater</h2>
+<div class="slider-box">
+<div class="slider-value" id="wVal">120°F</div>
+<div class="slider-wrap">
+<button onclick="adjust('water',-1)">−</button>
+<input type="range" id="water" min="100" max="140" value="120">
+<button onclick="adjust('water',1)">+</button>
+</div>
+</div>
+<label><input type="checkbox" id="insulated"> <span class="t" data-en="In uninsulated area?" data-es="¿Está en un área sin aislamiento?"></span></label>
+</section>
+
+<section class="section">
+<h2>Season</h2>
+<div class="season-btns">
+<button data-season="winter">Winter</button>
+<button data-season="spring">Spring</button>
+<button data-season="summer">Summer</button>
+<button data-season="fall">Fall</button>
+</div>
+</section>
+
+<button class="submitBtn" onclick="analyze()" id="analyzeBtn">Analyze</button>
+
+<div id="results"></div>
+
+</main>
+
+<footer id="footerContent"></footer>
+
+<script>
+let lang='en', state='', season='';
+
+/* TRANSLATION */
+function applyTranslation(){
+document.querySelectorAll('.t').forEach(el=>{
+el.innerText = el.dataset[lang];
+});
+
+title.innerText = lang==='en'?'Midwest High Bill Helper':'Asistente de Factura Alta Midwest';
+subtitle.innerText = lang==='en'
+?'Help us understand your energy usage so we can give personalized tips.'
+:'Ayúdanos a entender tu consumo para darte recomendaciones.';
+analyzeBtn.innerText = lang==='en'?'Analyze':'Analizar';
+
+footerContent.innerHTML = lang==='en'?`
+<h2>Helpful Resources</h2>
+
+<h3>Online Resources</h3>
+<ul>
+<li>Lower My Bill Toolkit – Tools to track and manage your energy use online.</li>
+<li>Seasonal Tips – Guidance on saving energy depending on the season.</li>
+<li>My Account – Check daily or hourly usage, identify spikes, and understand which appliances or behaviors increase your bill.</li>
+<li>Usage Alerts – Avoid surprises by setting budgets and getting notifications when approaching your monthly energy limit.</li>
+<li>Budget Billing – Makes planning and budgeting for energy costs easier with predictable monthly bills.</li>
+</ul>
+
+<p>
+These online tools help track energy use, avoid billing surprises, and plan monthly energy costs more accurately. 
+By monitoring usage throughout the month, you can see which appliances and habits impact your bill and take action to reduce energy consumption.
+</p>
+
+<p id="energyHouseCall">
+<h3>Energy House Call (except Ohio):</h3>
+Free, in-person Home Energy House Call. A trained energy specialist visits your home to check windows, doors, insulation, and daily energy use, then provides tips to help lower your consumption. 
+Available Mon-Fri 7am-7pm EST, Sat 7am-7pm EST.
+</p>
+`
+:
+`
+<h2>Recursos Útiles</h2>
+
+<h3>Recursos en Línea</h3>
+<ul>
+<li>Lower My Bill Toolkit – Herramientas para gestionar el consumo de energía.</li>
+<li>Consejos de temporada – Recomendaciones según la época del año.</li>
+<li>Mi Cuenta – Revise su consumo diario u horario e identifique aumentos.</li>
+<li>Alertas de uso – Evite sorpresas configurando límites de consumo.</li>
+<li>Facturación presupuestada – Pagos mensuales más predecibles.</li>
+</ul>
+
+<p>
+Estas herramientas ayudan a monitorear el consumo, evitar sorpresas en la factura y planificar mejor los costos de energía.
+Al revisar su consumo durante el mes, puede identificar qué hábitos o equipos aumentan el uso y tomar acciones para reducirlo.
+</p>
+
+<p id="energyHouseCall">
+<h3>Energy House Call (excepto Ohio):</h3>
+Visita gratuita al hogar donde un especialista evalúa ventanas, puertas, aislamiento y uso diario de energía, brindando recomendaciones para reducir el consumo.
+Disponible de lunes a viernes 7am-7pm EST, sábado 7am-7pm EST.
+</p>
+`;
+}
+
+langSwitch.onchange=()=>{
+lang = lang==='en'?'es':'en';
+applyTranslation();
+};
+
+/* BUTTONS */
+document.querySelectorAll('[data-state]').forEach(b=>{
+b.onclick=()=>{
+document.querySelectorAll('[data-state]').forEach(x=>x.classList.remove('selected'));
+b.classList.add('selected');
+state=b.dataset.state;
+};
+});
+
+document.querySelectorAll('[data-season]').forEach(b=>{
+b.onclick=()=>{
+document.querySelectorAll('[data-season]').forEach(x=>x.classList.remove('selected'));
+b.classList.add('selected');
+season=b.dataset.season;
+};
+});
+
+/* SLIDER */
+function colorize(el){
+let v=(el.value-el.min)/(el.max-el.min);
+let r=v*255,b=255-(v*255);
+el.style.background=`rgb(${r},0,${b})`;
+}
+
+function adjust(type,d){
+let el = type==='thermostat'?thermostat:water;
+el.value=parseInt(el.value)+d;
+el.dispatchEvent(new Event('input'));
+}
+
+thermostat.oninput=()=>{tVal.innerText=thermostat.value+'°F';colorize(thermostat);}
+water.oninput=()=>{wVal.innerText=water.value+'°F';colorize(water);}
+
+/* ANALYSIS */
+function analyze(){
+
+let ack = lang==='en'
+? "Thank you for taking the time to share this information. Based on your responses, we identified several behaviors that may be increasing your energy usage."
+: "Gracias por compartir esta información. Identificamos varios factores que pueden estar aumentando su consumo.";
+
+let adv = "";
+let tips = "";
+
+if(people.checked) adv += lang==='en'
+? "More people at home increases energy use due to higher demand for appliances and water. "
+: "Más personas aumentan el consumo por mayor uso de equipos. ";
+
+if(space.checked) adv += lang==='en'
+? "Space heaters consume a high amount of electricity. "
+: "Los calentadores consumen mucha energía. ";
+
+if(laundry.checked) adv += lang==='en'
+? "Hot water laundry increases energy use. "
+: "El agua caliente aumenta el consumo. ";
+
+if(ev.checked) adv += lang==='en'
+? "EV charging adds significant demand. "
+: "Cargar vehículos eléctricos aumenta la demanda. ";
+
+if(season==="summer") tips += lang==='en'
+? "Use blinds and raise thermostat slightly."
+: "Use cortinas y suba el termostato.";
+
+results.innerHTML = `
+<div class="result-card"><h3>Acknowledgement</h3>${ack}</div>
+<div class="result-card"><h3>Advises</h3>${adv}</div>
+<div class="result-card"><h3>Seasonal Tips</h3>${tips}</div>
+`;
+
+document.getElementById('energyHouseCall').style.display = (state==="OH")?'none':'block';
+}
+
+applyTranslation();
+</script>
+
+</body>
+</html>
